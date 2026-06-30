@@ -83,6 +83,13 @@ fn main() -> bitcoincore_rpc::Result<()> {
 
     // Load Trader wallet and generate a new address
 
+    // ================================
+    // TRADER WALLET ADDRESS
+    // ================================
+
+    let trader_address = trader.get_new_address(None, None)?;
+
+
     // Send 20 BTC from Miner to Trader
 
     // Check transaction in mempool
