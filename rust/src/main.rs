@@ -47,6 +47,26 @@ fn main() -> bitcoincore_rpc::Result<()> {
 
     // Create/Load the wallets, named 'Miner' and 'Trader'. Have logic to optionally create/load them if they do not exist or not loaded already.
 
+    // ================================
+    // CREATE OR LOAD WALLETS
+    // ================================
+
+    let miner_wallet = "Miner";
+    let trader_wallet = "Trader";
+
+    // Try load Miner wallet, if it fails create it
+    let miner = match rpc.load_wallet(miner_wallet) {
+        Ok(w) => w,
+        Err(_) => rpc.create_wallet(miner_wallet, None, None, None, None)?,
+    };
+
+    // Try load Trader wallet, if it fails create it
+    let trader = match rpc.load_wallet(trader_wallet) {
+        Ok(w) => w,
+        Err(_) => rpc.create_wallet(trader_wallet, None, None, None, None)?,
+    };
+
+
     // Generate spendable balances in the Miner wallet. How many blocks needs to be mined?
 
     // Load Trader wallet and generate a new address
