@@ -17,7 +17,7 @@ const RPC_PASS: &str = "password";
 // You can also use serde_json `Deserialize` derivation to capture the returned json result.
 fn send(rpc: &Client, addr: &str) -> bitcoincore_rpc::Result<String> {
     let args = [
-        json!([{addr : 100 }]), // recipient address
+        json!([{addr : 20 }]), // recipient address
         json!(null),            // conf target
         json!(null),            // estimate mode
         json!(null),            // fee rate in sats/vb
@@ -92,7 +92,25 @@ fn main() -> bitcoincore_rpc::Result<()> {
 
     // Send 20 BTC from Miner to Trader
 
+    // ================================
+    // SEND BTC (MINER → TRADER)
+    // ================================
+
+    let txid = send(&miner, &trader_address.to_string())?;
+    println!("Transaction sent: {}", txid);
+
+
+
     // Check transaction in mempool
+
+    // ================================
+    // CHECK MEMPOOL
+    // ================================
+
+    let mempool = rpc.get_raw_mempool()?;
+    println!("Mempool: {:?}", mempool);
+
+
 
     // Mine 1 block to confirm the transaction
 
