@@ -113,6 +113,13 @@ fn main() -> bitcoincore_rpc::Result<()> {
 
 
     // Mine 1 block to confirm the transaction
+    // ================================
+    // CONFIRM TRANSACTION
+    // ================================
+
+    let confirm_address = miner.get_new_address(None, None)?;
+    rpc.generate_to_address(1, &confirm_address)?;
+
 
     // Extract all required transaction details
 
