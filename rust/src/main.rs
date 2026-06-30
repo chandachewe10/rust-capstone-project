@@ -102,7 +102,12 @@ fn main() -> bitcoincore_rpc::Result<()> {
     let txid = miner_rpc.send_to_address(
         &trader_address,
         send_amount,
-        None, None, None, None, None, None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
     )?;
 
     // Check transaction in mempool
