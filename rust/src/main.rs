@@ -69,6 +69,18 @@ fn main() -> bitcoincore_rpc::Result<()> {
 
     // Generate spendable balances in the Miner wallet. How many blocks needs to be mined?
 
+    // ================================
+    // GENERATE COINS FOR MINER
+    // ================================
+
+    // Get a new address from miner wallet
+    let miner_address = miner.get_new_address(None, None)?;
+
+    // Mine 101 blocks. 100 are needed to mature coinbase in regtest
+    let _blocks = rpc.generate_to_address(101, &miner_address)?;
+
+
+
     // Load Trader wallet and generate a new address
 
     // Send 20 BTC from Miner to Trader
