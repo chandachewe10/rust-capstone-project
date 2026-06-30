@@ -130,6 +130,17 @@ fn main() -> bitcoincore_rpc::Result<()> {
     println!("Transaction details: {:?}", tx);
 
     // Write the data to ../out.txt in the specified format given in readme.md
+    // ================================
+    // WRITE RESULTS TO FILE
+    // ================================
 
+    let mut file = File::create("../out.txt")?;
+
+    writeln!(file, "Blockchain Info: {:?}", blockchain_info)?;
+    writeln!(file, "Miner Wallet: {}", miner_wallet)?;
+    writeln!(file, "Trader Wallet: {}", trader_wallet)?;
+    writeln!(file, "Transaction ID: {}", txid)?;
+    writeln!(file, "Final Transaction: {:?}", tx)?;
+    
     Ok(())
 }
