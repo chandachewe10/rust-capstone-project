@@ -122,6 +122,12 @@ fn main() -> bitcoincore_rpc::Result<()> {
 
 
     // Extract all required transaction details
+        // ================================
+    // GET TRANSACTION DETAILS
+    // ================================
+
+    let tx = rpc.get_transaction(&txid.into(), None)?;
+    println!("Transaction details: {:?}", tx);
 
     // Write the data to ../out.txt in the specified format given in readme.md
 
