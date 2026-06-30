@@ -58,7 +58,7 @@ fn main() -> bitcoincore_rpc::Result<()> {
     }
 
     // Wallet-scoped clients — bitcoincore-rpc requires a client pointed at
-    // /wallet/<name> to operate on a specific wallet; there's no per-call
+    // /wallet/<name> to operate on a specific wallet; there's no call
     // wallet parameter.
     let miner_rpc = Client::new(
         &format!("{}/wallet/{}", RPC_URL, miner_wallet),
